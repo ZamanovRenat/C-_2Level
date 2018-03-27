@@ -39,6 +39,16 @@ namespace MyGame
             // Связываем буфер в памяти с графическим объектом.
             // для того, чтобы рисовать в буфере
             Buffer = _context.Allocate(g, new Rectangle(0, 0, Width, Height));
+
+            try
+            {
+                int a = Width / (1000 - Width);
+                int b = Height / (1000 - Height);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Error ArgumentOutOfRangeException");
+            }
         }
 
         public static BaseObject[] _objs;
@@ -62,7 +72,7 @@ namespace MyGame
             Buffer.Graphics.Clear(Color.Black);
 
             Image newImg = Image.FromFile("meteor-shower.png");
-            RectangleF rect = new RectangleF(0, 0, 1000, 1000);
+            RectangleF rect = new RectangleF(0, 0, 1100, 1100);
             Buffer.Graphics.DrawImage(newImg, rect);
 
             foreach (BaseObject obj in _objs)
